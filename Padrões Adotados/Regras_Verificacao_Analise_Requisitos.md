@@ -18,3 +18,26 @@ A redação do requisito deve seguir um formato padronizado, focando na ação q
 - Todo requisito funcional deve obrigatoriamente iniciar com a estrutura: **"O sistema deve [verbo no infinitivo] ..."** ou **"O [Ator] deve ser capaz de [verbo no infinitivo] ..."**.
 - O uso de termos vagos, abstratos ou não quantificáveis é estritamente proibido. Palavras como *"rápido"*, *"fácil"*, *"amigável"*, *"bom"* ou *"adequado"* não podem constar no texto. 
 - Se o requisito for de performance (RNF), ele deve especificar a métrica exata (ex: *"O sistema deve carregar a lista de assentos em no máximo 2 segundos"* em vez de *"O sistema deve ser rápido"*).
+
+## 4. Identificadores de Issues no GitHub
+
+Para garantir rastreabilidade entre as issues do GitHub e os artefatos do projeto, todo **título de issue** deve começar com um identificador entre colchetes, seguindo o padrão abaixo:
+
+| Prefixo | Categoria | Exemplo de título |
+|---|---|---|
+| `[RF###]` | Requisito Funcional | `[RF012] Realizar Reserva - Backend` |
+| `[BP###]` | Boas Práticas de código | `[BP001] Adicionar comentários JSDoc nas APIs` |
+| `[TU###]` | Teste Unitário | `[TU003] Teste unitário - RF012 Criar Reserva` |
+| `[TV###]` | Teste de Validação (Caixa Preta) | `[TV001] Caso de teste - RF001 Realizar Login` |
+| `[TA###]` | Teste Automatizado (Selenium/Playwright) | `[TA001] Selenium - script de login RF001` |
+| `[DOC###]` | Documentação | `[DOC001] Atualizar README - seção de Testes` |
+| `[REL###]` | Release / Tag Git (Baseline) | `[REL003] Tag v0.3 - Baseline 3` |
+
+### Regras de uso dos identificadores de issues
+
+- O número sequencial deve ter **3 dígitos** (`001`, `002`, ...).
+- O identificador deve ser **único dentro de sua categoria** — nunca reutilize um número excluído.
+- Issues do tipo `[RF###]` devem referenciar o mesmo identificador do Requisito Funcional correspondente no **Documento de Requisitos** (`requisitos/Documento de Requisitos.md`).
+- Issues do tipo `[BP]`, `[TU]`, `[TV]`, `[TA]` e `[DOC]` devem mencionar na **descrição da issue** a qual RF ou critério de qualidade estão associadas.
+- A coluna **Milestone** de cada issue deve sempre indicar a Sprint correspondente (`Sprint 1`, `Sprint 2`, `Sprint 3`...).
+

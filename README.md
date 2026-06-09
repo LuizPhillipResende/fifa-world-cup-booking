@@ -2,6 +2,9 @@
 
 Projeto acadêmico para a disciplina de Engenharia de Software (UFLA - GCC188). Plataforma construída com Next.js, JavaScript e Node.js para simular o processo de reserva e venda de ingressos para copa do mundo da FIFA 2026.
 
+> 📄 **Documentação de Requisitos**: [`requisitos/Documento de Requisitos.md`](./requisitos/Documento%20de%20Requisitos.md)
+
+
 ## Equipe
 * Maria Rita Resende
 * Luiz Phillip Resende
@@ -37,6 +40,33 @@ npm install
 npm run dev
 ```
 Em seguida, acesse o browser e digite a URL `http://localhost:3000`. Você deverá ver o sistema no seu browser.
+
+## 4. PRINCIPAIS FUNCIONALIDADES DO SISTEMA
+
+O sistema implementa os seguintes requisitos funcionais:
+
+### Autenticação
+- **[RF001]** Realizar Login – Login obrigatório para acessar qualquer funcionalidade do sistema.
+
+### Estádio (CRUD – 1 tabela)
+- **[RF002]** Cadastrar Estádio – Registra um novo estádio com nome, cidade e capacidade.
+- **[RF003]** Consultar Estádios – Lista todos os estádios com filtro por nome ou cidade.
+- **[RF004]** Alterar Estádio – Edita as informações de um estádio existente.
+- **[RF005]** Excluir Estádio – Remove um estádio sem jogos vinculados.
+
+### Jogo (CRUD – 2 tabelas: `jogos` + `estadios`)
+- **[RF006]** Cadastrar Jogo – Cadastra uma partida com times, data/hora e estádio.
+- **[RF007]** Consultar Jogos – Lista todos os jogos cadastrados (visão do Administrador).
+- **[RF008]** Alterar Jogo – Edita os dados de um jogo sem reservas confirmadas.
+- **[RF009]** Excluir Jogo – Remove um jogo e seus assentos (sem reservas confirmadas).
+
+### Reserva (CRUD – 4 tabelas: `reservas` + `usuarios` + `jogos` + `assentos`)
+- **[RF010]** Consultar Reservas (Admin) – Relatório consolidado de todas as reservas do sistema.
+- **[RF011]** Cadastrar Usuário – Auto-cadastro de novos torcedores na plataforma.
+- **[RF012]** Realizar Reserva de Ingresso – Seleção de assento e reserva de ingresso por torcedor.
+- **[RF013]** Consultar Minhas Reservas – Histórico de reservas do torcedor logado.
+- **[RF014]** Cancelar Reserva – Cancelamento de reserva com antecedência mínima de 48h.
+- **[RF015]** Consultar Jogos Disponíveis (Torcedor) – Lista de jogos futuros com assentos disponíveis.
 
 ## 4. TECNOLOGIAS
 
