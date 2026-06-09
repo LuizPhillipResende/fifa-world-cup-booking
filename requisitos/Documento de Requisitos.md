@@ -119,52 +119,15 @@ O Torcedor é o usuário final que utiliza o sistema para visualizar os jogos di
 
 #### Visão do Administrador
 
-<!-- PLACEHOLDER: Insira abaixo a imagem exportada do Astah UML (diagrama-admin.png) -->
-<!-- Para exportar: no Astah, clique com o botão direito no diagrama > Export Image > PNG -->
-<!-- Salve o arquivo como: requisitos/diagrama-admin.png -->
 
-![Diagrama de Casos de Uso – Visão do Administrador](diagrama-admin.png)
+![Diagrama de Casos de Uso – Visão do Administrador](Diagrama_UseCase_Administrador.png)
 
-> _⚠️ Substitua esta linha pela imagem exportada do Astah UML após criar o diagrama._
->
-> **Casos de uso que devem aparecer no diagrama (ator: Administrador):**
-> RF001 – Realizar Login | RF002 – Cadastrar Estádio | RF003 – Consultar Estádios |
-> RF004 – Alterar Estádio | RF005 – Excluir Estádio | RF006 – Cadastrar Jogo |
-> RF007 – Consultar Jogos | RF008 – Alterar Jogo | RF009 – Excluir Jogo |
-> RF010 – Consultar Reservas
->
-> RF002 a RF010 possuem relação `<<include>>` com RF001 (todos exigem login).
-
----
 
 #### Visão do Torcedor
 
-<!-- PLACEHOLDER: Insira abaixo a imagem exportada do Astah UML (diagrama-torcedor.png) -->
-<!-- Para exportar: no Astah, clique com o botão direito no diagrama > Export Image > PNG -->
-<!-- Salve o arquivo como: requisitos/diagrama-torcedor.png -->
 
-![Diagrama de Casos de Uso – Visão do Torcedor](diagrama-torcedor.png)
+![Diagrama de Casos de Uso – Visão do Torcedor](Diagrama_UseCase_Torcedor.png)
 
-> _⚠️ Substitua esta linha pela imagem exportada do Astah UML após criar o diagrama._
->
-> **Casos de uso que devem aparecer no diagrama:**
->
-> **Ator: Visitante (não autenticado)**
-> RF015 – Consultar Jogos Disponíveis | RF011 – Cadastrar Usuário
->
-> **Ator: Torcedor (autenticado)**
-> RF001 – Realizar Login | RF012 – Realizar Reserva de Ingresso |
-> RF013 – Consultar Minhas Reservas | RF014 – Cancelar Reserva
->
-> **Relacionamentos:**
-> - RF012, RF013 e RF014 possuem relação `<<include>>` com RF001 (exigem login).
-> - RF015 **NÃO** exige login — é acessível ao Visitante (usuário não autenticado).
-> - RF011 **NÃO** exige login — é o cadastro inicial do Torcedor.
-> - O Visitante pode se tornar Torcedor após executar RF011 e RF001.
-
-> **Consulte o arquivo `requisitos/GUIA-Astah-UML.md` para o passo a passo completo de como criar esses diagramas.**
-
----
 
 ## 3. Requisitos Funcionais (Casos de Uso)
 
