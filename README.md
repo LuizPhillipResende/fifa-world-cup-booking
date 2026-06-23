@@ -1,6 +1,6 @@
 # fifa-world-cup-booking
 
-Projeto acadêmico para a disciplina de Engenharia de Software (UFLA - GCC188). Plataforma construída com Next.js, JavaScript e Node.js para simular o processo de reserva e venda de ingressos para copa do mundo da FIFA 2026.
+Projeto acadêmico desenvolvido para a disciplina de Engenharia de Software (GCC188 - UFLA). Consiste em uma plataforma web construída com Next.js, JavaScript e Node.js, criada para simular um sistema completo de reserva e venda de ingressos para a Copa do Mundo da FIFA 2026.
 
 > 📄 **Documentação de Requisitos**: [`requisitos/Documento de Requisitos.md`](./requisitos/Documento%20de%20Requisitos.md)
 
@@ -11,8 +11,9 @@ Projeto acadêmico para a disciplina de Engenharia de Software (UFLA - GCC188). 
 * Tainara de Fátima Matias Souza
 
 ## 1. CONTEXTO DO PROBLEMA E SOLUÇÃO
-- **Descrição do problema:** Os torcedores enfrentam filas virtuais desorganizadas, instabilidade do sistema e falta de transparência na seleção de assentos ao comprar ingressos para eventos de grande porte.
+- **Descrição do problema:** A compra de ingressos para eventos de grande porte, como a Copa do Mundo, frequentemente gera frustração nos torcedores devido à altíssima demanda. Durante os picos de acesso, é comum que as plataformas apresentem instabilidade nos servidores e filas virtuais desorganizadas. Além disso, há uma grande falta de transparência na etapa de seleção de assentos, deixando o usuário sem saber se o lugar desejado ainda está realmente disponível até o momento de pagar.
 - **Descrição da solução:** O sistema web deverá propiciar o cadastro de jogos, estádios e usuários. Realizar a venda de ingressos via web, permitindo a seleção visual de assentos e a atualização em tempo real da disponibilidade, com finalização do pedido no carrinho.
+Para resolver essas dificuldades, o projeto propõe uma plataforma web integrada que gerencia o cadastro de jogos, estádios e usuários. Para o torcedor, o sistema entrega uma experiência de compra justa e fluida, através de um mapa interativo, é possível selecionar os assentos com disponibilidade atualizada em tempo real e finalizar o pedido com rapidez por meio de um carrinho de compras.
 
 ## 2. INSTRUÇÕES PARA USO
 Para testar e usar a aplicação na sua máquina (como usuário final):
