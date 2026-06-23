@@ -90,3 +90,62 @@ Este projeto está organizado como um monólito Next.js (o Next.js cuida de todo
 *   **`public/`**: Arquivos estáticos (imagens, ícones).
 *   **`Padrões Adotados/`**: Documentação de Engenharia de Software e regras de requisitos.
 *   **`database/`**: Scripts SQL de criação do banco de dados relacional.
+
+## 6. REGRAS DE USO DO GIT
+
+Para manter a organização do repositório e facilitar a colaboração, as seguintes regras de uso do Git devem ser seguidas pela equipe:
+
+### 6.1. Padrão de Nomenclatura de Branches
+- **`main`**: Branch principal, contém o código de produção. Apenas código estável e testado.
+- **`develop`**: Branch de desenvolvimento. Todas as novas features convergem para cá antes de irem para a `main`.
+- **`feature/nome-da-feature`**: Para desenvolvimento de novas funcionalidades (ex: `feature/tela-de-login`).
+- **`bugfix/nome-do-bug`**: Para correção de bugs (ex: `bugfix/erro-no-carrinho`).
+
+### 6.2. Mensagens de Commit (Conventional Commits)
+As mensagens de commit devem ser claras e seguir o padrão:
+- `feat:` Nova funcionalidade (ex: `feat: adiciona componente Header`)
+- `fix:` Correção de bug (ex: `fix: corrige alinhamento da tabela de jogos`)
+- `docs:` Alterações na documentação (ex: `docs: atualiza regras do git no README`)
+- `style:` Formatação de código, ponto e vírgula, etc.
+- `refactor:` Refatoração de código sem mudar seu comportamento.
+
+### 6.3. Fluxo de Trabalho (Pull Requests)
+- Nunca faça commits diretamente na branch `main`.
+- Crie uma branch a partir da `develop` para trabalhar.
+- Ao finalizar, crie um Pull Request (PR) apontando para a `develop`.
+- Recomenda-se que o código seja revisado por outro membro da equipe antes do merge.
+
+## 7. BOAS PRÁTICAS DE CODIFICAÇÃO E LEGIBILIDADE
+
+Para garantir que o código seja limpo, de fácil manutenção e legível, a equipe deve seguir os seguintes padrões:
+
+1. **Clean Code (Código Limpo):**
+   - **Nomes Descritivos:** Variáveis, funções e componentes devem ter nomes em inglês (ou português padronizado) que descrevam exatamente o que fazem (ex: `getAvailableSeats` em vez de `getSeats`).
+   - **Funções Pequenas:** Funções devem ter uma única responsabilidade (Princípio da Responsabilidade Única).
+   - **Evitar Números Mágicos:** Valores constantes devem ser extraídos para variáveis com nomes claros (ex: `const MAX_SEATS = 100`).
+
+2. **Padrões de Projeto (React/Next.js):**
+   - **Componentização:** Dividir interfaces grandes em componentes menores e reutilizáveis (ex: extrair botões e modais para arquivos separados).
+   - **Separação de Preocupações:** O código de UI (`page.js`) não deve misturar regras de negócio pesadas. Regras de banco de dados devem ficar em `actions` ou `api routes`.
+
+3. **Comentários:**
+   - Comentar apenas o "porquê" (lógica de negócios complexa) e não o "o quê" (o código já deve ser expressivo o suficiente).
+
+4. **Estilo de Código (Linting e Formatação):**
+   - Utilizar ESLint (configurado nativamente no Next.js) e Prettier para padronização automática da formatação (espaçamentos, ponto-e-vírgula, indentação).
+
+## 8. INFRAESTRUTURA DE IMPLANTAÇÃO
+
+O sistema foi arquitetado para ser implantado na nuvem, utilizando serviços modernos e escaláveis:
+
+- **Plataforma de Hospedagem (Frontend e Backend):** 
+  - **Vercel**: O sistema Next.js será publicado na Vercel, que oferece integração nativa com o GitHub (CI/CD automático a cada push na branch `main`), escalabilidade global via Edge Network e facilidade de gerenciamento de Serverless Functions (onde rodam as APIs).
+
+- **Banco de Dados (Produção):**
+  - **Supabase / Vercel Postgres**: O banco de dados relacional (PostgreSQL) será hospedado em uma dessas plataformas, oferecendo backups automáticos, alta disponibilidade e fácil integração com o Prisma ORM.
+
+- **Fluxo de CI/CD:**
+  1. O desenvolvedor abre um Pull Request para a `main`.
+  2. A Vercel gera um ambiente de *Preview* automático para testes.
+  3. Após aprovação (Merge), o código é automaticamente colocado em *Produção* (Deploy).
+
