@@ -478,9 +478,9 @@ Neste documento, adota-se a seguinte nomenclatura:
 
 ### 5.1 Prototipação
 
-**Link para o protótipo no Figma:**
+O protótipo de alta fidelidade contendo as interfaces descritas abaixo está documentado no arquivo em formato PDF, anexo a este repositório.
 
-> _(Inserir aqui o link do projeto no Figma após criá-lo. Exemplo: `https://www.figma.com/file/XXXXXXXX/FIFA-World-Cup-Booking`)_
+> 📄 **Documento de Prototipação**: [`requisitos/Protótipo de Engenharia de Software.pdf`](./Protótipo%20de%20Engenharia%20de%20Software.pdf)
 
 ### 5.2 Mapa de Navegação de Interfaces
 
@@ -508,95 +508,62 @@ O mapa abaixo representa o fluxo de navegação entre as interfaces do sistema:
 
 ### 5.3 Descrição das Interfaces e Protótipos
 
-As interfaces abaixo devem ter seus protótipos inseridos nesta seção. Cada interface possui um espaço reservado para a captura de tela (screenshot) do Figma ou do sistema implementado.
+As interfaces abaixo possuem seus protótipos visuais documentados no arquivo `Protótipo de Engenharia de Software.pdf`.
 
 ---
 
 #### I_CadastrarUsuario – Cadastrar Usuário
 **Requisitos atendidos:** RF011
 
-<!-- SCREENSHOT: Inserir aqui a captura de tela da interface I_CadastrarUsuario -->
-> _⚠️ Screenshot pendente. Inserir a imagem do Figma ou do sistema implementado._
-
 ---
 
 #### I_Login – Tela de Login
 **Requisitos atendidos:** RF001
-
-<!-- SCREENSHOT: Inserir aqui a captura de tela da interface I_Login -->
-> _⚠️ Screenshot pendente. Inserir a imagem do Figma ou do sistema implementado._
 
 ---
 
 #### IE_Login_CredenciaisInvalidas – Erro de Credenciais no Login
 **Requisitos atendidos:** RF001
 
-<!-- SCREENSHOT: Inserir aqui a captura de tela com mensagem de erro de login -->
-> _⚠️ Screenshot pendente._
-
 ---
 
 #### I_DashboardAdmin – Painel do Administrador
 **Requisitos atendidos:** RF001 (após login bem-sucedido como Administrador)
-
-<!-- SCREENSHOT: Inserir aqui a captura de tela do painel principal do Administrador -->
-> _⚠️ Screenshot pendente._
 
 ---
 
 #### I_CadastrarEstadio – Formulário de Cadastro de Estádio
 **Requisitos atendidos:** RF002
 
-<!-- SCREENSHOT: Inserir aqui a captura de tela do formulário de cadastro de estádio -->
-> _⚠️ Screenshot pendente._
-
 ---
 
 #### I_ConsultarEstadios – Lista de Estádios
 **Requisitos atendidos:** RF003, RF004, RF005
-
-<!-- SCREENSHOT: Inserir aqui a captura de tela da lista de estádios (com botões Editar e Excluir) -->
-> _⚠️ Screenshot pendente._
 
 ---
 
 #### I_AlterarEstadio – Formulário de Edição de Estádio
 **Requisitos atendidos:** RF004
 
-<!-- SCREENSHOT: Inserir aqui a captura de tela do formulário de edição de estádio -->
-> _⚠️ Screenshot pendente._
-
 ---
 
 #### I_CadastrarJogo – Formulário de Cadastro de Jogo
 **Requisitos atendidos:** RF006
-
-<!-- SCREENSHOT: Inserir aqui a captura de tela do formulário de cadastro de jogo -->
-> _⚠️ Screenshot pendente._
 
 ---
 
 #### I_ConsultarJogos – Lista de Jogos (Administrador)
 **Requisitos atendidos:** RF007, RF008, RF009
 
-<!-- SCREENSHOT: Inserir aqui a captura de tela da lista de jogos com opções de edição e exclusão -->
-> _⚠️ Screenshot pendente._
-
 ---
 
 #### I_ConsultarReservas_Admin – Lista de Reservas (Administrador)
 **Requisitos atendidos:** RF010
 
-<!-- SCREENSHOT: Inserir aqui a captura de tela do painel de reservas do administrador -->
-> _⚠️ Screenshot pendente._
-
 ---
 
 #### I_DashboardTorcedor – Painel do Torcedor
 **Requisitos atendidos:** RF001 (após login bem-sucedido como Torcedor)
-
-<!-- SCREENSHOT: Inserir aqui a captura de tela do painel principal do Torcedor -->
-> _⚠️ Screenshot pendente._
 
 ---
 
@@ -604,32 +571,20 @@ As interfaces abaixo devem ter seus protótipos inseridos nesta seção. Cada in
 **Requisitos atendidos:** RF015
 **Acesso:** Público — não requer autenticação
 
-<!-- SCREENSHOT: Inserir aqui a captura de tela da página inicial pública com a lista de jogos disponíveis -->
-> _⚠️ Screenshot pendente._
-
 ---
 
 #### I_MapaAssentos – Mapa Interativo de Assentos
 **Requisitos atendidos:** RF012
-
-<!-- SCREENSHOT: Inserir aqui a captura de tela do mapa interativo de seleção de assentos -->
-> _⚠️ Screenshot pendente._
 
 ---
 
 #### I_ConfirmarReserva – Tela de Confirmação da Reserva
 **Requisitos atendidos:** RF012
 
-<!-- SCREENSHOT: Inserir aqui a captura de tela do resumo e confirmação da reserva -->
-> _⚠️ Screenshot pendente._
-
 ---
 
 #### I_MinhasReservas – Lista de Reservas do Torcedor
 **Requisitos atendidos:** RF013, RF014
-
-<!-- SCREENSHOT: Inserir aqui a captura de tela do histórico de reservas do torcedor (com botão Cancelar) -->
-> _⚠️ Screenshot pendente._
 
 ---
 
@@ -662,6 +617,36 @@ As interfaces abaixo devem ter seus protótipos inseridos nesta seção. Cada in
 | I_MinhasReservas | Lista de Reservas do Torcedor | RF013, RF014 | Requer login (Torcedor) |
 | IS_CancelarReserva_Sucesso | Reserva Cancelada com Sucesso | RF014 | Requer login |
 | IE_CancelarReserva_PrazoExpirado | Erro: Prazo de Cancelamento Expirado | RF014 | Requer login |
+
+### 5.5 Matriz de Rastreabilidade (Backlog GitHub)
+
+Para garantir a rastreabilidade entre os requisitos (RFs e RNFs) e as entregas do projeto, cada requisito foi mapeado para uma Issue correspondente no Backlog do GitHub do projeto.
+
+| Identificador Requisito | Tipo | Issue correspondente no GitHub |
+|---|---|---|
+| RF001 | Funcional | `[RF001] Realizar Login` |
+| RF002 | Funcional | `[RF002] Cadastrar Estádio` |
+| RF003 | Funcional | `[RF003] Consultar Estádios` |
+| RF004 | Funcional | `[RF004] Alterar Estádio` |
+| RF005 | Funcional | `[RF005] Excluir Estádio` |
+| RF006 | Funcional | `[RF006] Cadastrar Jogo` |
+| RF007 | Funcional | `[RF007] Consultar Jogos` |
+| RF008 | Funcional | `[RF008] Alterar Jogo` |
+| RF009 | Funcional | `[RF009] Excluir Jogo` |
+| RF010 | Funcional | `[RF010] Consultar Reservas` |
+| RF011 | Funcional | `[RF011] Cadastrar Usuário` |
+| RF012 | Funcional | `[RF012] Realizar Reserva de Ingresso` |
+| RF013 | Funcional | `[RF013] Consultar Minhas Reservas` |
+| RF014 | Funcional | `[RF014] Cancelar Reserva` |
+| RF015 | Funcional | `[RF015] Consultar Jogos Disponíveis` |
+| NF001 | Não Funcional (Usabilidade) | `[RNF001] Tempo de Aprendizado da Interface Principal` |
+| NF002 | Não Funcional (Usabilidade) | `[RNF002] Compatibilidade com Navegadores Web` |
+| NF003 | Não Funcional (Desempenho) | `[RNF003] Tempo de Resposta das Páginas` |
+| NF004 | Não Funcional (Desempenho) | `[RNF004] Capacidade de Usuários Simultâneos` |
+| NF005 | Não Funcional (Segurança) | `[RNF005] Criptografia de Senhas no Banco de Dados` |
+| NF006 | Não Funcional (Segurança) | `[RNF006] Autenticação por Token JWT` |
+| NF007 | Não Funcional (Confiabilidade) | `[RNF007] Disponibilidade do Sistema` |
+| NF008 | Não Funcional (Distribuição) | `[RNF008] Compatibilidade com Sistema Operacional` |
 
 ---
 
