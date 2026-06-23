@@ -383,14 +383,14 @@ Esta seção contém os requisitos não funcionais do sistema FIFA World Cup Boo
 
 Esta seção descreve os requisitos não funcionais associados à facilidade de uso da interface com o usuário.
 
-#### [NF001] Tempo de Aprendizado da Interface Principal
+#### [RNF001] Tempo de Aprendizado da Interface Principal
 
 O sistema deve ser projetado de forma que um usuário que nunca o utilizou anteriormente seja capaz de localizar a lista de jogos disponíveis e iniciar o processo de compra de um ingresso em no máximo **3 cliques** a partir da tela de login, sem necessidade de leitura de manual ou tutorial.
 
 | Prioridade: | ◻ | Essencial | 🗹 | Importante | ◻ | Desejável |
 |:---|---:|:---|---:|:---|---:|:---|
 
-#### [NF002] Compatibilidade com Navegadores Web
+#### [RNF002] Compatibilidade com Navegadores Web
 
 O sistema deve funcionar corretamente (sem erros de layout, funcionalidades quebradas ou falhas de JavaScript) nas seguintes versões mínimas de navegadores:
 - Google Chrome versão 110 ou superior.
@@ -407,14 +407,14 @@ O sistema deve funcionar corretamente (sem erros de layout, funcionalidades queb
 
 Esta seção descreve os requisitos não funcionais associados à eficiência, uso de recursos e tempo de resposta do sistema.
 
-#### [NF003] Tempo de Resposta das Páginas
+#### [RNF003] Tempo de Resposta das Páginas
 
 Todas as páginas do sistema devem ser carregadas e renderizadas completamente em no máximo **3 segundos** em uma conexão de internet com largura de banda de 10 Mbps, medido a partir do momento em que o usuário aciona a navegação até a exibição completa do conteúdo (estado "Carregamento Concluído" do navegador).
 
 | Prioridade: | 🗹 | Essencial | ◻ | Importante | ◻ | Desejável |
 |:---|---:|:---|---:|:---|---:|:---|
 
-#### [NF004] Capacidade de Usuários Simultâneos
+#### [RNF004] Capacidade de Usuários Simultâneos
 
 O sistema deve suportar no mínimo **500 usuários realizando operações simultâneas** (consulta de jogos, seleção de assentos e criação de reservas) sem degradação de desempenho — ou seja, sem que o tempo de resposta das páginas ultrapasse o limite definido em NF003. Este requisito deve ser validado por meio de testes de carga com a ferramenta Apache JMeter versão 5.6 ou superior.
 
@@ -427,14 +427,14 @@ O sistema deve suportar no mínimo **500 usuários realizando operações simult
 
 Esta seção descreve os requisitos não funcionais associados à integridade, privacidade e autenticidade dos dados.
 
-#### [NF005] Criptografia de Senhas no Banco de Dados
+#### [RNF005] Criptografia de Senhas no Banco de Dados
 
 Todas as senhas de usuários devem ser armazenadas no banco de dados PostgreSQL utilizando o algoritmo de hash **bcrypt** com fator de custo (cost factor) mínimo de **12**, de forma que nenhuma senha seja armazenada em texto plano. Este requisito se aplica tanto ao cadastro quanto à alteração de senha. A implementação deve utilizar a biblioteca `bcryptjs` versão 2.4.3 ou superior.
 
 | Prioridade: | 🗹 | Essencial | ◻ | Importante | ◻ | Desejável |
 |:---|---:|:---|---:|:---|---:|:---|
 
-#### [NF006] Autenticação por Token JWT
+#### [RNF006] Autenticação por Token JWT
 
 O controle de acesso ao sistema deve ser implementado por meio de **JSON Web Tokens (JWT)** com prazo de expiração máximo de **8 horas** a partir do momento do login. Após a expiração, o usuário deve ser redirecionado automaticamente para a tela de login. Os tokens devem ser assinados com o algoritmo **HS256** utilizando uma chave secreta de no mínimo 32 caracteres configurada via variável de ambiente.
 
@@ -447,7 +447,7 @@ O controle de acesso ao sistema deve ser implementado por meio de **JSON Web Tok
 
 Esta seção descreve os requisitos não funcionais associados à frequência e severidade de falhas e à capacidade de recuperação do sistema.
 
-#### [NF007] Disponibilidade do Sistema
+#### [RNF007] Disponibilidade do Sistema
 
 O sistema deve estar disponível para acesso dos usuários em no mínimo **99% do tempo** em um período mensal, excluindo janelas de manutenção programadas (previamente comunicadas com no mínimo 24 horas de antecedência). Isso equivale a no máximo **7 horas e 12 minutos** de indisponibilidade não planejada por mês.
 
@@ -460,7 +460,7 @@ O sistema deve estar disponível para acesso dos usuários em no mínimo **99% d
 
 Esta seção descreve os requisitos não funcionais associados à distribuição e execução do sistema.
 
-#### [NF008] Compatibilidade com Sistema Operacional do Servidor
+#### [RNF008] Compatibilidade com Sistema Operacional do Servidor
 
 O sistema deve ser executável em servidores com sistema operacional **Linux Ubuntu Server 22.04 LTS** ou superior, utilizando **Node.js versão 18.x ou superior** e banco de dados **PostgreSQL versão 15.x ou superior**. O sistema deve ser executável também em ambiente Windows 10 ou superior para fins de desenvolvimento local.
 
