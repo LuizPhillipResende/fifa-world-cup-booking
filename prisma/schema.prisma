@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  phone     String?
+  cpf       String?  @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  reservations Reservation[]
+}
+
+model Stadium {
+  id        String   @id @default(cuid())
+  name      String
+  city      String
+  country   String
+  capacity  Int
+  image     String?
+  games     Game[]
+}
+
+model Team {
+  id        String   @id @default(cuid())
+  name      String
+  code      String   @unique
+  flag      String?
+  groupId   String?
+  group     Group?   @relation(fields: [groupId], references: [id])
+  gamesAsHome Game[] @relation("HomeTeam")
+  gamesAsAway Game[] @relation("AwayTeam")
+}
+
+model Group {
+  id        String   @id @default(cuid())
+  name      String   @unique // e.g., "Group A"
+  teams     Team[]
+}
+
+model Game {
+  id          String   @id @default(cuid())
+  date        DateTime
+  phase       String   // e.g., "Fase de Grupos", "Oitavas"
+  homeTeamId  String?
+  awayTeamId  String?
+  stadiumId   String
+  basePrice   Float    @default(1105.0)
+  homeTeam    Team?    @relation("HomeTeam", fields: [homeTeamId], references: [id])
+  awayTeam    Team?    @relation("AwayTeam", fields: [awayTeamId], references: [id])
+  stadium     Stadium  @relation(fields: [stadiumId], references: [id])
+  reservations Reservation[]
+}
+
+model Reservation {
+  id          String   @id @default(cuid())
+  userId      String
+  gameId      String
+  seatSector  String
+  seatRow     String
+  seatNumber  String
+  status      String   @default("CONFIRMED") // PENDING, CONFIRMED, CANCELLED
+  price       Float
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id])
+  game        Game     @relation(fields: [gameId], references: [id])
+
+  @@unique([gameId, seatSector, seatRow, seatNumber])
+}
