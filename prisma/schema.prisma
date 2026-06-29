@@ -17,6 +17,7 @@ model User {
   password  String
   phone     String?
   cpf       String?  @unique
+  role      String   @default("FAN") // "ADMIN" ou "FAN"
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   reservations Reservation[]

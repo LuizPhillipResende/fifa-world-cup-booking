@@ -1,15 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Lock, Eye } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import AuthLayout from "@/components/ui/AuthLayout";
+import InputField from "@/components/ui/InputField";
+import Button from "@/components/ui/Button";
 
 export default function LoginPage() {
   const router = useRouter();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,83 +38,78 @@ export default function LoginPage() {
       router.refresh();
     }
   };
+
   return (
-    <div className="flex flex-col flex-1 min-h-screen bg-bg-base relative">
-      {/* Background elements */}
-      <div className="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1518605368461-1ee7e53f19e4?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-overlay pointer-events-none"></div>
-      <div className="absolute inset-0 z-0 bg-gradient-to-t from-bg-base via-bg-base/80 to-transparent pointer-events-none"></div>
-      
-      <div className="flex flex-1 items-center justify-center relative z-10 px-6 py-12">
-        <div className="w-full max-w-md bg-card-bg/80 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-black italic tracking-tighter text-white uppercase mb-2">
-              Acesse Sua Conta
-            </h1>
-            <p className="text-sm text-gray-400">
-              Bem-vindo de volta ao FIFA WC Booking
-            </p>
-          </div>
+    <AuthLayout
+      title="Acesse Sua Conta"
+      subtitle="Bem-vindo de volta ao FIFA WC Booking"
+      maxWidth="md"
+    >
+      <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+        <InputField
+          label="E-mail"
+          name="email"
+          type="email"
+          icon={<Mail className="w-5 h-5 text-gray-500" />}
+          placeholder="seu@email.com"
+          required
+        />
 
-          <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-2">
-              <label className="text-xs font-bold tracking-widest text-gray-400 uppercase">E-mail</label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="w-5 h-5 text-gray-500" />
-                </div>
-                <input 
-                  type="email"
-                  name="email"
-                  required 
-                  placeholder="seu@email.com" 
-                  className="w-full pl-10 pr-4 py-3 bg-[#151a23] border border-white/10 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-bold tracking-widest text-gray-400 uppercase">Senha</label>
-                <Link href="#" className="text-sm font-medium text-brand-primary hover:text-brand-primary-hover transition-colors">
-                  Esqueci minha senha
-                </Link>
-              </div>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="w-5 h-5 text-gray-500" />
-                </div>
-                <input 
-                  type="password"
-                  name="password"
-                  required 
-                  placeholder="Sua senha" 
-                  className="w-full pl-10 pr-12 py-3 bg-[#151a23] border border-white/10 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all"
-                />
-                <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center">
-                  <Eye className="w-5 h-5 text-gray-500 hover:text-gray-300 transition-colors" />
-                </button>
-              </div>
-            </div>
-
-            {error && <div className="text-red-500 text-sm text-center font-medium">{error}</div>}
-
-            <button 
-              type="submit"
-              disabled={loading}
-              className="w-full py-3 mt-4 bg-brand-primary hover:bg-brand-primary-hover text-white font-bold rounded-xl shadow-lg shadow-brand-primary/20 transition-all disabled:opacity-50"
+        <InputField
+          label="Senha"
+          name="password"
+          type={showPassword ? "text" : "password"}
+          icon={<Lock className="w-5 h-5 text-gray-500" />}
+          placeholder="Sua senha"
+          required
+          headerRight={
+            <Link
+              href="#"
+              className="text-sm font-medium text-brand-primary hover:text-brand-primary-hover transition-colors"
             >
-              {loading ? "Entrando..." : "Entrar na Conta"}
-            </button>
-          </form>
-
-          <div className="mt-8 pt-6 border-t border-white/10 text-center">
-            <span className="text-gray-400 text-sm">Não tem conta? </span>
-            <Link href="/cadastro" className="text-brand-secondary font-bold hover:text-cyan-300 transition-colors">
-              Criar conta grátis
+              Esqueci minha senha
             </Link>
+          }
+          rightElement={
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="hover:text-gray-300 transition-colors"
+            >
+              {showPassword ? (
+                <EyeOff className="w-5 h-5 text-gray-500" />
+              ) : (
+                <Eye className="w-5 h-5 text-gray-500" />
+              )}
+            </button>
+          }
+        />
+
+        {error && (
+          <div className="text-red-500 text-sm text-center font-medium">
+            {error}
           </div>
-        </div>
+        )}
+
+        <Button
+          type="submit"
+          fullWidth
+          loading={loading}
+          loadingText="Entrando..."
+        >
+          Entrar na Conta
+        </Button>
+      </form>
+
+      <div className="mt-8 pt-6 border-t border-white/10 text-center">
+        <span className="text-gray-400 text-sm">Não tem conta? </span>
+        <Link
+          href="/cadastro"
+          className="text-brand-secondary font-bold hover:text-cyan-300 transition-colors"
+        >
+          Criar conta grátis
+        </Link>
       </div>
-    </div>
+    </AuthLayout>
   );
 }
