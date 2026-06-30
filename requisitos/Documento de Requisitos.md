@@ -486,25 +486,7 @@ O protótipo de alta fidelidade contendo as interfaces descritas abaixo está do
 
 O mapa abaixo representa o fluxo de navegação entre as interfaces do sistema:
 
-```
-[I_CadastrarUsuario] --> [I_Login]
-                              |
-              +---------------+------------------+
-              |                                  |
-     [Administrador]                        [Torcedor]
-              |                                  |
-     [I_DashboardAdmin]              [I_DashboardTorcedor]
-              |                                  |
-    +---------+----------+         +-------------+-----------+
-    |          |          |         |             |           |
-[I_CadastrarEstadio] [I_CadastrarJogo] [I_ConsultarJogosDisponiveis] [I_ConsultarReservas_Admin]
-    |          |          |              |
-[I_ConsultarEstadios] [I_ConsultarJogos] [I_MapaAssentos]
-    |          |                          |
-[I_AlterarEstadio] [I_AlterarJogo]   [I_ConfirmarReserva]
-                                          |
-                                    [I_MinhasReservas]
-```
+<img width="762" height="532" alt="mapa de fluxo" src="https://github.com/user-attachments/assets/6dc3861b-ea4c-438c-b43b-050b692f9965" />
 
 ### 5.3 Descrição das Interfaces e Protótipos
 
