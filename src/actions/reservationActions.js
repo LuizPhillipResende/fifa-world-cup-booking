@@ -3,6 +3,7 @@
 import { requireAdmin, requireAuth } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
 import * as reservationService from "@/services/reservationService";
+import { MIN_CANCELLATION_ADVANCE_MS } from "@/lib/constants";
 
 export async function createReservationAction(payload) {
   try {
@@ -53,5 +54,36 @@ export async function deleteReservationAction(id) {
     return { success: true };
   } catch (error) {
     return { error: error.message || "Erro ao excluir reserva" };
+  }
+}
+
+export async function cancelReservationAction(id) {
+  try {
+    const { session, errorResponse } = await requireAuth();
+    if (errorResponse) throw new Error("Usuário não logado");
+
+    const reservation = await reservationService.getReservationById(id);
+    if (!reservation) throw new Error("Reserva não encontrada");
+
+    // Verifica se a reserva pertence ao usuário logado
+    if (reservation.userId !== session.user.id) {
+      throw new Error("Não autorizado");
+    }
+
+    // Regra de Negócio: Cancelamento com 48h de antecedência (RN19)
+    const now = new Date();
+    const gameDate = new Date(reservation.game.date);
+    const differenceInMs = gameDate.getTime() - now.getTime();
+
+    if (differenceInMs < MIN_CANCELLATION_ADVANCE_MS) {
+      throw new Error("O cancelamento só é permitido com pelo menos 48h de antecedência do jogo.");
+    }
+
+    await reservationService.updateReservationStatus(id, "CANCELLED");
+    revalidatePath("/meu-painel");
+    
+    return { success: true };
+  } catch (error) {
+    return { error: error.message || "Erro ao cancelar reserva" };
   }
 }

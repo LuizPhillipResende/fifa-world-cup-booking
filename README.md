@@ -59,9 +59,9 @@ npm run dev
 # 8. (Opcional) Executar Testes Unitários (Jest)
 npm run test
 
-# 9. (Opcional) Executar Testes de Validação E2E (Cypress)
+# 9. (Opcional) Executar Testes de Validação E2E (Playwright)
 # Certifique-se de que o servidor (npm run dev) esteja rodando em outro terminal
-npm run cypress:open
+npx playwright test
 ```
 
 Acesse **`http://localhost:3000`** no navegador.

@@ -21,6 +21,13 @@ export async function getReservations(status = null) {
   });
 }
 
+export async function getReservationById(id) {
+  return prisma.reservation.findUnique({
+    where: { id },
+    include: { game: true },
+  });
+}
+
 export async function createReservation({ userId, gameId, seatSector, seatRow, seatNumber, price }) {
   if (!gameId || !seatSector || !seatRow || !seatNumber || !price) {
     throw new Error("Campos obrigatórios ausentes.");

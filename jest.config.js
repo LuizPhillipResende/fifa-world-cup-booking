@@ -12,6 +12,7 @@ const customJestConfig = {
   moduleNameMapper: {
     // Handle module aliases
     "^@/(.*)$": "<rootDir>/src/$1",
+    "^@/lib/auth$": "<rootDir>/__mocks__/auth.js",
   },
 };
 

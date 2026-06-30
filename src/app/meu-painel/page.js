@@ -9,6 +9,7 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import { formatCurrency, formatDate, formatTime } from "@/lib/formatters";
 import Image from "next/image";
+import CancelButton from "./CancelButton";
 
 const prisma = new PrismaClient();
 
@@ -164,7 +165,7 @@ export default async function MeuPainelPage() {
                     >
                       Ver
                     </Button>
-                    {/* Fake Cancel button - in real app would trigger a modal to cancel */}
+                    <CancelButton reservationId={res.id} status={res.status} />
                   </div>
                 </div>
               </Card>
