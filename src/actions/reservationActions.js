@@ -13,7 +13,9 @@ export async function createReservationAction(payload) {
       userId: session.user.id,
       gameId: payload.gameId,
       seatSector: payload.seatSector,
-      totalPrice: payload.totalPrice,
+      seatRow: payload.seatRow,
+      seatNumber: payload.seatNumber,
+      price: payload.price,
     });
     
     revalidatePath("/meu-painel");

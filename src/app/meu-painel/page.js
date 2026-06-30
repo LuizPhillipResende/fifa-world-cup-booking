@@ -35,7 +35,7 @@ export default async function MeuPainelPage() {
 
   const totalInvested = reservations
     .filter((r) => r.status !== "CANCELLED")
-    .reduce((sum, r) => sum + r.totalPrice, 0);
+    .reduce((sum, r) => sum + r.price, 0);
 
   const confirmedCount = reservations.filter(
     (r) => r.status === "CONFIRMED"
@@ -133,7 +133,7 @@ export default async function MeuPainelPage() {
                       {res.game.awayTeam?.code || "TBD"}
                     </h3>
                     <p className="text-xs text-gray-400">
-                      {formatDate(res.game.date)} • {formatTime(res.game.date)} • Premium • Assento {res.seatSector}
+                      {formatDate(res.game.date)} • {formatTime(res.game.date)} • {res.seatSector} • Assento {res.seatRow}{res.seatNumber}
                     </p>
                   </div>
                 </div>
@@ -143,7 +143,7 @@ export default async function MeuPainelPage() {
                   {/* Price & ID */}
                   <div className="text-right">
                     <div className="text-sm font-bold text-green-500">
-                      {formatCurrency(res.totalPrice)}
+                      {formatCurrency(res.price)}
                     </div>
                     <div className="text-[10px] text-gray-500 mt-0.5">
                       #{res.id.substring(0, 8)}
@@ -160,6 +160,7 @@ export default async function MeuPainelPage() {
                       size="sm"
                       icon={<Eye className="w-4 h-4" />}
                       className="border border-cyan-400/50 hover:bg-cyan-400/10 text-cyan-400"
+                      href={`/mapa-assentos?jogoId=${res.game.id}`}
                     >
                       Ver
                     </Button>

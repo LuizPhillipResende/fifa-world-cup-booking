@@ -49,8 +49,10 @@ export default function MapaAssentosClient({ game, takenSeats }) {
     try {
       const res = await createReservationAction({
         gameId: game.id,
-        seatSector: selectedSeat.id,
-        totalPrice: game.basePrice,
+        seatSector: "Premium",
+        seatRow: selectedSeat.row,
+        seatNumber: String(selectedSeat.col),
+        price: game.basePrice,
       });
 
       if (res.error) {

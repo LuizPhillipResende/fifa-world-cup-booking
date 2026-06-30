@@ -40,14 +40,14 @@ export async function getGameById(id) {
       stadium: true,
       reservations: {
         where: { status: { not: "CANCELLED" } },
-        select: { seatSector: true },
+        select: { seatRow: true, seatNumber: true },
       },
     },
   });
 
   if (!game) return null;
 
-  const takenSeats = game.reservations.map((r) => r.seatSector);
+  const takenSeats = game.reservations.map((r) => `${r.seatRow}${r.seatNumber}`);
 
   // Removendo reservations do retorno principal
   const { reservations, ...gameData } = game;

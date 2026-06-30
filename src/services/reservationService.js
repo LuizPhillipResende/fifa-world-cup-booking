@@ -21,8 +21,8 @@ export async function getReservations(status = null) {
   });
 }
 
-export async function createReservation({ userId, gameId, seatSector, totalPrice }) {
-  if (!gameId || !seatSector || !totalPrice) {
+export async function createReservation({ userId, gameId, seatSector, seatRow, seatNumber, price }) {
+  if (!gameId || !seatSector || !seatRow || !seatNumber || !price) {
     throw new Error("Campos obrigatórios ausentes.");
   }
 
@@ -31,6 +31,8 @@ export async function createReservation({ userId, gameId, seatSector, totalPrice
     where: {
       gameId,
       seatSector,
+      seatRow,
+      seatNumber,
       status: { not: "CANCELLED" },
     },
   });
@@ -44,7 +46,9 @@ export async function createReservation({ userId, gameId, seatSector, totalPrice
       userId,
       gameId,
       seatSector,
-      totalPrice: Number(totalPrice),
+      seatRow,
+      seatNumber,
+      price: Number(price),
       status: "CONFIRMED", // Por padrão assumimos que foi confirmada (simulando pagamento)
     },
   });
