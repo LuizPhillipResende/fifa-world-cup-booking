@@ -34,7 +34,7 @@ export default function CancelButton({ reservationId, status }) {
       icon={<X className="w-4 h-4" />}
       className="border border-red-500/50 hover:bg-red-500/10 text-red-400"
       onClick={handleCancel}
-      isLoading={isCancelling}
+      loading={isCancelling}
     >
       Cancelar
     </Button>
