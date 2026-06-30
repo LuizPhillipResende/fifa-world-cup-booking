@@ -120,13 +120,13 @@ O Torcedor é o usuário final que utiliza o sistema para visualizar os jogos di
 #### Visão do Administrador
 
 
-![Diagrama de Casos de Uso – Visão do Administrador](Diagrama_UseCase_Administrador.png)
+![Diagrama de Casos de Uso – Visão do Administrador](Diagramas/Diagrama_UseCase_Administrador.png)
 
 
 #### Visão do Torcedor
 
 
-![Diagrama de Casos de Uso – Visão do Torcedor](Diagrama_UseCase_Torcedor.png)
+![Diagrama de Casos de Uso – Visão do Torcedor](Diagramas/Diagrama_UseCase_Torcedor.png)
 
 
 ## 3. Requisitos Funcionais (Casos de Uso)
